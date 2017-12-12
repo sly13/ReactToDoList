@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 
-import Row from "react-bootstrap/lib/Row";
-import Col from "react-bootstrap/lib/Col";
-import Grid from "react-bootstrap/lib/Grid";
-import Thumbnail from "react-bootstrap/lib/Thumbnail";
-import Button from "react-bootstrap/lib/Button";
+import tasks from '../futures';
+import { Row, Col, Grid, Thumbnail, Button } from 'react-bootstrap';
 
 class TaskList extends Component {
 
@@ -24,11 +21,13 @@ class TaskList extends Component {
 	}
 
 	render() {
+
 		return (
 			<div>
+				<h1>All Tasks</h1>
 				<Grid>
 					<Row>
-						{this.props.tasks.map(this.renderListItem)}
+						{tasks.map(this.renderListItem)}
 					</Row>
 				</Grid>
 			</div>

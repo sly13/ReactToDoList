@@ -2,28 +2,32 @@ import React, { Component } from "react";
 import FontAwesome from "react-fontawesome";
 import logo from "../logo.svg";
 
-import Navbar from 'react-bootstrap/lib/Navbar';
-import NavItem from 'react-bootstrap/lib/NavItem';
-import Nav from 'react-bootstrap/lib/Nav';
+import { Nav, Navbar, NavItem } from "react-bootstrap";
+import { LinkContainer } from 'react-router-bootstrap';
 
 class Header extends Component {
 	render() {
 		const appNavbar = (
-			<Navbar inverse collapseOnSelect>
-				<Navbar.Header>
-					<Navbar.Brand>
-						<a href="#"><img src={logo} className="App-logo" alt="logo" /> ToDoList</a>
-					</Navbar.Brand>
-					<Navbar.Toggle />
-				</Navbar.Header>
+			<div>
+				<Navbar inverse collapseOnSelect>
+					<Navbar.Header>
+						<Navbar.Brand>
+							<LinkContainer to='/' activeClassName="none">
+								<a href="#"><img src={logo} className="App-logo" alt="logo" /> ToDoList</a>
+							</LinkContainer>
+						</Navbar.Brand>
+						<Navbar.Toggle />
+					</Navbar.Header>
 
-				<Navbar.Collapse>
-					<Nav pullRight>
-						<NavItem eventKey={1} href="#"> All List </NavItem>
-						<NavItem eventKey={2} href="#"> Add task </NavItem>
-					</Nav>
-				</Navbar.Collapse>
-			</Navbar>
+					<Navbar.Collapse>
+						<Nav pullRight>
+							<LinkContainer to='/add-task' activeClassName="none">
+								<NavItem eventKey={2}>Add task</NavItem>
+							</LinkContainer>
+						</Nav>
+					</Navbar.Collapse>
+				</Navbar>
+			</div>
 		);
 
 		return <div>{appNavbar}</div>;
