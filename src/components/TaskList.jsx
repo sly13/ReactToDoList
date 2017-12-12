@@ -7,47 +7,32 @@ import Thumbnail from "react-bootstrap/lib/Thumbnail";
 import Button from "react-bootstrap/lib/Button";
 
 class TaskList extends Component {
-	render() {
-		const tasks = this.props;
 
-		const taskList = (
-			<Grid>
-				<Row>
-					<Col xs={6} md={4}>
-						<Thumbnail src="/assets/thumbnaildiv.png" alt="242x200">
-							<h3>Thumbnail label</h3>
-							<p>Description</p>
-							<p>
-								<Button bsStyle="primary">Button</Button>&nbsp;
-								<Button bsStyle="default">Button</Button>
-							</p>
-						</Thumbnail>
-					</Col>
-					<Col xs={6} md={4}>
-						<Thumbnail src="/assets/thumbnaildiv.png" alt="242x200">
-							<h3>Thumbnail label</h3>
-							<p>Description</p>
-							<p>
-								<Button bsStyle="primary">Button</Button>&nbsp;
-								<Button bsStyle="default">Button</Button>
-							</p>
-						</Thumbnail>
-					</Col>
-					<Col xs={6} md={4}>
-						<Thumbnail src="/assets/thumbnaildiv.png" alt="242x200">
-							<h3>Thumbnail label</h3>
-							<p>Description</p>
-							<p>
-								<Button bsStyle="primary">Button</Button>&nbsp;
-						 		<Button bsStyle="default">Button</Button>
-							</p>
-						</Thumbnail>
-					</Col>
-				</Row>
-			</Grid>
+	renderListItem({ id, title, text }) {
+		return (
+			<Col xs={6} md={4} key={id}>
+				<Thumbnail>
+					<h3>{title}</h3>
+					<p>{text}</p>
+					<p>
+						<Button bsStyle="primary">Edit</Button>&nbsp;
+						<Button bsStyle="danger">Delete</Button>
+					</p>
+				</Thumbnail>
+			</Col>
 		);
+	}
 
-		return <div>{taskList}</div>;
+	render() {
+		return (
+			<div>
+				<Grid>
+					<Row>
+						{this.props.tasks.map(this.renderListItem)}
+					</Row>
+				</Grid>
+			</div>
+		);
 	}
 }
 
